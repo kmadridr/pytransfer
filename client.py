@@ -17,7 +17,7 @@ while(True):
 	else:
 		f = open(data, 'w+')
 		respond = s.recv(1024)
-		while (respond):
+		while (len(respond) >= 1):
 			f.write(respond)
 			respond = s.recv(1024)
 		f.close()
