@@ -20,7 +20,7 @@ while(True):
 		while (respond):
 			f.write(respond)
 			respond = s.recv(1024)
-			f.close()
-			print('Successfully get the file')
+		f.close()
+		print('Successfully get the file')
 s.close()
 print('connection closed')
