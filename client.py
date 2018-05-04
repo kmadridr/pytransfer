@@ -5,20 +5,21 @@ host = socket.gethostname()     # Get local machine name
 port = 60000                    # Reserve a port for your service.
 
 s.connect((host, port))
-s.send("Hello server!")
+data = input()
+s.send(data)
 
-with open('received_file', 'wb') as f:
-    print 'file opened'
-    while True:
-        print('receiving data...')
-        data = s.recv(1024)
-        print('data=%s', (data))
-        if not data:
-            break
-        # write data to a file
-        f.write(data)
+if data == 'ls':
+    respond = s.recv(1024)
+    print(respond)
+else:
 
-f.close()
-print('Successfully get the file')
-s.close()
-print('connection closed')
+    f = open(data, 'wb')
+    respond = s.recv(1024)
+    while respond:
+        f.write(s.recv(1024))
+        respond = s.recv(1024)
+
+    f.close()
+    print('Successfully get the file')
+    s.close()
+    print('connection closed')
