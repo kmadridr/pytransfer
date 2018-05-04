@@ -17,9 +17,7 @@ while(True):
 	else:
 		f = open(data, 'w+')
 		respond = s.recv(1024)
-		while (len(respond) >= 1):
-			f.write(respond)
-			respond = s.recv(1024)
+		f.write(respond)	
 		f.close()
 		print('Successfully get the file')
 s.close()
