@@ -12,7 +12,7 @@ print( 'Server listening....')
 while True:
     conn, addr = s.accept()     # Establish connection with client.
     print ('Got connection from', addr)
-    
+
     while True:
         data = conn.recv(1024)
         print('Server received', repr(data))
@@ -21,7 +21,7 @@ while True:
             filenames = ''
             for a in files:
                 filenames += a + ' '
-                conn.send(filenames)
+            conn.send(filenames)
             else:
                 filename=data
                 f = open(filename,'rb')
@@ -30,9 +30,8 @@ while True:
                     conn.send(l)
                     print('Sent ',repr(l))
                     l = f.read(1024)
-                    f.close()
+                f.close()
+                print('Done sending')
 
-                    print('Done sending')
-                    conn.send('Thank you for connecting')
-                    conn.close()
-                    break
+    conn.send('Thank you for connecting')
+    conn.close()
