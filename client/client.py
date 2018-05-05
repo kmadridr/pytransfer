@@ -1,8 +1,12 @@
+# Codigo hecho por Felipe Guzman y Kevin Madrid
+# nos basamos en la documentacio oficial
+# https://docs.python.org/2/howto/sockets.html
+
 import socket                   # Import socket module
 
 s = socket.socket()             # Create a socket object
-host = socket.gethostname()     # Get local machine name
-port = 60000                    # Reserve a port for your service.
+host = "10.12.36.32"     # Get local machine name
+port = 8080                    # Reserve a port for your service.
 
 s.connect((host, port))
 while(True):
@@ -15,8 +19,11 @@ while(True):
 	elif data == 'finito':
 		break
 	else:
-		f = open(data, 'w+')
+		
 		respond = s.recv(1024)
+		if(respond == "no"):
+			continue		
+		f = open(data, 'w+')		
 		f.write(respond)	
 		f.close()
 		print('Successfully get the file')
