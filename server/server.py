@@ -1,4 +1,4 @@
-#Codigo hecho por Kevin Madrid y Felipe Guzman
+#Codigo hecho por Kevin Madrid 24568 y Felipe Guzman 21168
 #basado en la documentacion del siguiente enlace
 #https://docs.python.org/2/library/socket.html
 
